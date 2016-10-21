@@ -7,6 +7,7 @@
 //
 
 
+
 class BankVault {
     
     let name: String
@@ -21,6 +22,47 @@ class BankVault {
 }
 
 
+protocol ProvideAccess {
+    
+    func allowEntryWithPassword (password: [Int]) -> Bool
+}
 
+
+extension BankVault: ProvideAccess {
+    
+    internal func allowEntryWithPassword(password: [Int]) -> Bool {
+        
+        
+        
+        
+        for (index, value) in password.enumerated() {
+            
+            if index % 2 == 0 {
+                
+                if value % 2 != 0 {
+                    
+                    return false
+                }
+                
+            }
+        }
+        
+        if password.count <= 0 || password.count > 10 {
+            
+            return false
+        }
+            
+        else {
+            
+            return true
+        }
+        
+    }
+    
+    
+    
+    
+    
+}
 
 
